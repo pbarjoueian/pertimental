@@ -1,8 +1,14 @@
+LICENSE.txt
+MANIFEST.in
 README.rst
 setup.py
+pertimental/__init__.py
+pertimental/main.py
+pertimental/train_data.py
 pertimental.egg-info/PKG-INFO
 pertimental.egg-info/SOURCES.txt
 pertimental.egg-info/dependency_links.txt
 pertimental.egg-info/entry_points.txt
 pertimental.egg-info/requires.txt
 pertimental.egg-info/top_level.txt
+pertimental/model/Model.pkl

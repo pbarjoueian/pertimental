@@ -21,12 +21,12 @@ class PersianSentiment:
         train_set = negative_features + positive_features + neutral_features
     
         model = NaiveBayesClassifier.train(train_set)
-        joblib.dump(model, 'Model.pkl')
+        joblib.dump(model, 'model/Model.pkl')
     
     def __get_model(self):
-        if not os.path.exists("Model.pkl"):
+        if not os.path.exists("model/Model.pkl"):
             self.__train()
-        return joblib.load('Model.pkl')
+        return joblib.load('model/Model.pkl')
 
     def score(self, sentences):
         # Predict
