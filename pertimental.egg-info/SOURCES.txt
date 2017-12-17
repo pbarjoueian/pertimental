@@ -1,10 +1,10 @@
 LICENSE.txt
 MANIFEST.in
 README.rst
+setup.cfg
 setup.py
 pertimental/__init__.py
-pertimental/main.py
-pertimental/train_data.py
+pertimental/predict.py
 pertimental.egg-info/PKG-INFO
 pertimental.egg-info/SOURCES.txt
 pertimental.egg-info/dependency_links.txt

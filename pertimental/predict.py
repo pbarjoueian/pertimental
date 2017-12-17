@@ -5,7 +5,12 @@ from hazm import Normalizer, sent_tokenize, word_tokenize, Stemmer
 from nltk.classify import NaiveBayesClassifier
 from sklearn.externals import joblib
 
-from train_data import negative_vocab, neutral_vocab, positive_vocab
+
+positive_vocab = ['عالی', 'ممتاز', 'شگفت‌انگیز', 'خیلی خوب', 'خوب', 'زیبا', 'عالی', ':)']
+
+negative_vocab = ['بد', 'وحشتناک', 'به‌درد‌نخور', 'تنفر', ':(']
+
+neutral_vocab = ['عادی', 'اون', 'این', 'بود', 'هست', 'به', 'است', 'معمولی', 'نیست']
 
 
 class PersianSentiment:
@@ -21,12 +26,12 @@ class PersianSentiment:
         train_set = negative_features + positive_features + neutral_features
     
         model = NaiveBayesClassifier.train(train_set)
-        joblib.dump(model, 'model/Model.pkl')
+        joblib.dump(model, 'Model.pkl')
     
     def __get_model(self):
-        if not os.path.exists("model/Model.pkl"):
+        if not os.path.exists("Model.pkl"):
             self.__train()
-        return joblib.load('model/Model.pkl')
+        return joblib.load('Model.pkl')
 
     def score(self, sentences):
         # Predict
@@ -65,7 +70,7 @@ class PersianSentiment:
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        print("Use python3 main.py <Your Text>")
+        print("Use python3 predict.py <Your Text>")
         exit(0)
     else:
         PersianSentiment().score(sys.argv[1])

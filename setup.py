@@ -16,12 +16,13 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
 
     name='pertimental',
-    version='0.2.5.dev1',
+    packages = ['pertimental'],
+    version='0.3.4.dev1',
     description='A Python Persian Text Sentiment Analyser.',
-    long_description=long_description,  # Optional
+    long_description=long_description,
     url='https://github.com/pbarjoueian/pertimental',
     author='Peyman Barjoueian',
-    author_email='p.barjoueian@gmail.com',  # Optional
+    author_email='p.barjoueian@gmail.com',
 
     classifiers=[
         'Development Status :: 3 - Alpha',
@@ -38,11 +39,9 @@ setup(
 
     keywords='nlp persian sentiment',
 
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-
     package_data={
-        'data':
-            ['model/Model.pkl', ],
+        'pertimental':
+            ['model/Model.pkl'],
     },
 
     install_requires=['six', 'scikit-learn', 'nltk', 'libwapiti', 'hazm'],

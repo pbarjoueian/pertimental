@@ -1,4 +1,4 @@
-#phonetic representation
+#Model
 include pertimental/model/Model.pkl
 
 #Misc
