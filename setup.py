@@ -16,7 +16,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
 
     name='pertimental',
-    version='0.2.dev1',
+    version='0.2.4.dev1',
     description='A Python Persian Text Sentiment Analyser.',
     long_description=long_description,  # Optional
     url='https://github.com/pbarjoueian/pertimental',
@@ -41,10 +41,6 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
     install_requires=['six', 'scikit-learn', 'nltk', 'libwapiti', 'hazm'],
-
-    package_data={
-        'Model': ['Model.pkl'],
-    },
 
     entry_points={
         'console_scripts': [
