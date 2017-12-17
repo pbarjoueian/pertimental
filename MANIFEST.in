@@ -1,0 +1,6 @@
+#phonetic representation
+include pertimental/model/Model.pkl
+
+#Misc
+include LICENSE.txt
+include README.rst
