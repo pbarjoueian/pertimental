@@ -29,7 +29,7 @@ class PersianSentiment:
         joblib.dump(model, 'Model.pkl')
     
     def __get_model(self):
-        if not os.path.exists("Model.pkl"):
+        if not os.path.exists('Model.pkl'):
             self.__train()
         return joblib.load('Model.pkl')
 
