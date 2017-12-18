@@ -55,15 +55,15 @@ class PersianSentiment:
                     pos = pos + 1
     
         positive_sentiment = str(float(pos) / len(words))
-        print('Positive: ' + positive_sentiment)
+        # print('Positive: ' + positive_sentiment)
         neutral_sentiment = str(float(neu) / len(words))
-        print('Neutral: ' + neutral_sentiment)
+        # print('Neutral: ' + neutral_sentiment)
         negative_sentiment = str(float(neg) / len(words))
-        print('Negative: ' + negative_sentiment)
+        # print('Negative: ' + negative_sentiment)
     
         total_sentiment = (float(positive_sentiment) + float(neutral_sentiment) +
                            float(negative_sentiment)) / 3
-        print('Total (Avg): ' + str(total_sentiment))
+        # print('Total (Avg): ' + str(total_sentiment))
     
         return total_sentiment
 
