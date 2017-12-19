@@ -3,6 +3,7 @@ MANIFEST.in
 README.rst
 setup.cfg
 setup.py
+pertimental/Model.pkl
 pertimental/__init__.py
 pertimental/predict.py
 pertimental.egg-info/PKG-INFO
@@ -11,4 +12,3 @@ pertimental.egg-info/dependency_links.txt
 pertimental.egg-info/entry_points.txt
 pertimental.egg-info/requires.txt
 pertimental.egg-info/top_level.txt
-pertimental/model/Model.pkl

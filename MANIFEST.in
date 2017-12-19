@@ -1,5 +1,5 @@
 #Model
-include pertimental/model/Model.pkl
+include pertimental/Model.pkl
 
 #Misc
 include LICENSE.txt

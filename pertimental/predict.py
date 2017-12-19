@@ -8,7 +8,7 @@ from sklearn.externals import joblib
 
 positive_vocab = ['عالی', 'ممتاز', 'شگفت‌انگیز', 'خیلی خوب', 'خوب', 'زیبا', 'عالی', ':)']
 
-negative_vocab = ['بد', 'وحشتناک', 'به‌درد‌نخور', 'تنفر', ':(']
+negative_vocab = ['بد', 'وحشتناک', 'به‌درد‌نخور', 'تنفر', 'خیلی بد', 'ناراضی', ':(']
 
 neutral_vocab = ['عادی', 'اون', 'این', 'بود', 'هست', 'به', 'است', 'معمولی', 'نیست']
 
@@ -58,11 +58,11 @@ class PersianSentiment:
         # print('Positive: ' + positive_sentiment)
         neutral_sentiment = str(float(neu) / len(words))
         # print('Neutral: ' + neutral_sentiment)
-        negative_sentiment = str(float(neg) / len(words))
+        negative_sentiment = str(-float(neg) / len(words))
         # print('Negative: ' + negative_sentiment)
     
-        total_sentiment = (float(positive_sentiment) + float(neutral_sentiment) +
-                           float(negative_sentiment)) / 3
+        total_sentiment = (float(positive_sentiment) +
+                           float(negative_sentiment)) / 2
         # print('Total (Avg): ' + str(total_sentiment))
     
         return total_sentiment
@@ -73,4 +73,4 @@ if __name__ == "__main__":
         print("Use python3 predict.py <Your Text>")
         exit(0)
     else:
-        PersianSentiment().score(sys.argv[1])
+        print(PersianSentiment().score(sys.argv[1]))
