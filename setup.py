@@ -17,7 +17,7 @@ setup(
 
     name='pertimental',
     packages = ['pertimental'],
-    version='0.4.0.dev1',
+    version='0.5.0',
     description='A Python Persian Text Sentiment Analyser.',
     long_description=long_description,
     url='https://github.com/pbarjoueian/pertimental',

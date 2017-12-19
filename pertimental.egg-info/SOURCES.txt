@@ -5,7 +5,7 @@ setup.cfg
 setup.py
 pertimental/Model.pkl
 pertimental/__init__.py
-pertimental/predict.py
+pertimental/sentiment.py
 pertimental.egg-info/PKG-INFO
 pertimental.egg-info/SOURCES.txt
 pertimental.egg-info/dependency_links.txt
