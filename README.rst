@@ -1,4 +1,4 @@
-A Python Persian Text sentiment Analyser
+A Python Persian Text Sentiment Analyser
 =======================
 
 A package for determining sentiment score of Persian texts. I used NLTK, Hazm packages and Naive Bayes classifier for this purpose.

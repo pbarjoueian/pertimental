@@ -5,7 +5,7 @@ from hazm import Normalizer, sent_tokenize, word_tokenize, Stemmer
 from nltk.classify import NaiveBayesClassifier
 from sklearn.externals import joblib
 
-
+# TODO: Dataset should be place in different file(s).
 positive_vocab = ['عالی', 'ممتاز', 'شگفت‌انگیز', 'خیلی خوب', 'خوب', 'زیبا', 'عالی', ':)']
 
 negative_vocab = ['بد', 'وحشتناک', 'به‌درد‌نخور', 'تنفر', 'خیلی بد', 'ناراضی', ':(']
@@ -26,11 +26,14 @@ class PersianSentiment:
         train_set = negative_features + positive_features + neutral_features
     
         model = NaiveBayesClassifier.train(train_set)
+        # TODO: Model.pkl should be place in different directories related to package.
         joblib.dump(model, 'Model.pkl')
     
     def __get_model(self):
+        # TODO: Model.pkl should be place in different directories related to package.
         if not os.path.exists('Model.pkl'):
             self.__train()
+        # TODO: Model.pkl should be place in different directories related to package.
         return joblib.load('Model.pkl')
 
     def score(self, sentences):
