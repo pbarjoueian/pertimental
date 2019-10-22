@@ -1,5 +1,5 @@
 hazm==0.5.2
 libwapiti==0.2.1
-nltk==3.0.5
+nltk==3.4.5
 scikit-learn==0.19.1
 six==1.11.0
