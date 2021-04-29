@@ -1,5 +1,0 @@
-six
-scikit-learn
-nltk
-libwapiti
-hazm
