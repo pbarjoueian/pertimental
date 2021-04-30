@@ -16,7 +16,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
 
     name='pertimental',
-    packages = ['pertimental'],
+    packages=['pertimental'],
     version='0.5.0',
     description='A Python Persian Text Sentiment Analyser.',
     long_description=long_description,

@@ -1,40 +1,40 @@
-import os
+#!/usr/bin/env python3
 
+import os
 import sys
+
 from hazm import Normalizer, sent_tokenize, word_tokenize, Stemmer
 from nltk.classify import NaiveBayesClassifier
-from sklearn.externals import joblib
+import joblib
 
 # TODO: Dataset should be place in different file(s).
-positive_vocab = ['عالی', 'ممتاز', 'شگفت‌انگیز', 'خیلی خوب', 'خوب', 'زیبا', 'عالی', ':)']
+POSITIVE_VOCAB = ['عالی', 'ممتاز', 'شگفت‌انگیز', 'خیلی خوب', 'خوب', 'زیبا', 'عالی', ':)']
+NEGATIVE_VOCAB = ['بد', 'وحشتناک', 'به‌درد‌نخور', 'تنفر', 'خیلی بد', 'ناراضی', ':(']
+NEUTRAL_VOCAB = ['عادی', 'اون', 'این', 'بود', 'هست', 'به', 'است', 'معمولی', 'نیست']
 
-negative_vocab = ['بد', 'وحشتناک', 'به‌درد‌نخور', 'تنفر', 'خیلی بد', 'ناراضی', ':(']
-
-neutral_vocab = ['عادی', 'اون', 'این', 'بود', 'هست', 'به', 'است', 'معمولی', 'نیست']
+# TODO: Model.pkl should be place in different directories related to package.
+MODEL_PATH = 'Model.pkl'
 
 
 class PersianSentiment:
-
     def __word_feats(self, words):
         return dict([(word, True) for word in words])
-    
+
     def __train(self):
-        positive_features = [(self.__word_feats(pos), 'pos') for pos in positive_vocab]
-        negative_features = [(self.__word_feats(neg), 'neg') for neg in negative_vocab]
-        neutral_features = [(self.__word_feats(neu), 'neu') for neu in neutral_vocab]
-    
+        positive_features = [(self.__word_feats(pos), 'pos') for pos in POSITIVE_VOCAB]
+        negative_features = [(self.__word_feats(neg), 'neg') for neg in NEGATIVE_VOCAB]
+        neutral_features = [(self.__word_feats(neu), 'neu') for neu in NEUTRAL_VOCAB]
+
         train_set = negative_features + positive_features + neutral_features
-    
+
         model = NaiveBayesClassifier.train(train_set)
-        # TODO: Model.pkl should be place in different directories related to package.
-        joblib.dump(model, 'Model.pkl')
-    
+        joblib.dump(model, MODEL_PATH)
+
     def __get_model(self):
-        # TODO: Model.pkl should be place in different directories related to package.
-        if not os.path.exists('Model.pkl'):
+        if not os.path.exists(MODEL_PATH):
             self.__train()
-        # TODO: Model.pkl should be place in different directories related to package.
-        return joblib.load('Model.pkl')
+
+        return joblib.load(MODEL_PATH)
 
     def score(self, sentences):
         # Predict
@@ -42,13 +42,13 @@ class PersianSentiment:
         stemmer = Stemmer()
         classifier = self.__get_model()
         normalizer = Normalizer()
-    
+
         sentences = sent_tokenize(sentences)
-    
+
         for sentence in sentences:
             sentence = normalizer.normalize(sentence)
             words = word_tokenize(sentence)
-    
+
             for word in words:
                 stemmer.stem(word)
                 class_result = classifier.classify(self.__word_feats(word))
@@ -56,23 +56,24 @@ class PersianSentiment:
                     neg = neg + 1
                 if class_result == 'pos':
                     pos = pos + 1
-    
+                if class_result == 'neu':
+                    neu = neu + 1
+
         positive_sentiment = str(float(pos) / len(words))
         # print('Positive: ' + positive_sentiment)
         neutral_sentiment = str(float(neu) / len(words))
         # print('Neutral: ' + neutral_sentiment)
         negative_sentiment = str(-float(neg) / len(words))
         # print('Negative: ' + negative_sentiment)
-    
-        total_sentiment = (float(positive_sentiment) +
-                           float(negative_sentiment)) / 2
+
+        total_sentiment = (float(positive_sentiment)+float(negative_sentiment)) / 2
         # print('Total (Avg): ' + str(total_sentiment))
-    
+
         return total_sentiment
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
+    if len(sys.argv) != 2:
         print("Use python3 predict.py <Your Text>")
         exit(0)
     else:
