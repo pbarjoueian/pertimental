@@ -12,8 +12,3 @@ Example
     >>> from pertimental.sentiment import PersianSentiment
     >>> print(PersianSentiment().score("سلام دنیا. این یک متن خیلی خوب برای تست است."))
     0.6
-
-
-See also
---------
-Special thanks to Sepidarr.ir team Sina Sadrzadeh and Masoud Mirzaei.
